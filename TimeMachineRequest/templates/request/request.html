@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/request/" method="post">
+    {% csrf_token %}
+    {{ formset }}
+    <input type="submit" value="Submit" />
+</form>
+
+ <p>
+{% for request in requests %}
+    
+    {{ request.request_text }}
+    ,
+{% endfor %}
+
+{% endblock %}
