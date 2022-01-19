@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'MakeTimeRequest'
+    'MakeTimeRequest',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# schedule
+CRONJOBS = [
+    ('*/1 * * * *', 'MakeTimeRequest.timeRequest.printHello', '>> /home/alexander/Job/python/Practice/Production/TimeMachineRequest/TimeMachineRequest/path/to/log/file.log')
+    ]
+
+
 
 
 # Internationalization
