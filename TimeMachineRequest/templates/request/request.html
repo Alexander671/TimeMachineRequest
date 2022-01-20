@@ -8,10 +8,9 @@
 </form>
 
  <p>
-{% for request in req %}
+{% for request in requests %}
     
-    {{ request.url }}
-    {{ request.response }}
+    {{ request.request_text }}
     ,
 {% endfor %}
 
