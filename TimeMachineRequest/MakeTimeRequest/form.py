@@ -9,6 +9,3 @@ class RequestForm(ModelForm):
     class Meta:
         model = Request
         fields = ['url','time_request']
-        widgets = {
-        'time_request': DateTimeLocalInput(attrs={'type': 'datetime-local'}),
-        }

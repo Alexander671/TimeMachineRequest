@@ -1,11 +1,12 @@
-from django.utils import timezone
+from django.utils import timezone, dateformat
 from django.db import models
 from django.conf import settings
 
 class Request(models.Model): # Таблица новостей которая наследует models.Model
     url = models.URLField(max_length=300, default = "") # название тега
-    time_request = models.DateTimeField(default=timezone.now) # дата создания
+    time_request = models.DateTimeField(default = timezone.now().replace(second=0, microsecond=0)) # дата создания
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank = True, null = True)
+    response = models.TextField(null =  True)
     class Meta:
         verbose_name = ("Request") # человекочитаемое имя объекта
         verbose_name_plural = ("Requests")  #человекочитаемое множественное имя для Категорий
