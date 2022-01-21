@@ -2,10 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.base import View
 from .form import RequestForm
-from .models import Request
+
 from requests import get
-
-
 class makeRequest (View):
     def get(self, request):
         form = RequestForm()
