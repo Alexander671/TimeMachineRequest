@@ -7,8 +7,10 @@ from requests import get
 class makeRequest (View):
     def get(self, request):
         form = RequestForm()
-        return render(request, 'request/request.html', {'formset': form})
-
+        req = Request.objects.filter(user = request.user.id)
+        print(req)
+        return render(request, 'template_example/bluepink/index.html', {'req' : req, 'formset': form})
+ 
 
     def post(self, request):
         form = RequestForm(request.POST)
@@ -16,9 +18,8 @@ class makeRequest (View):
             
             req = form.save(commit=False)
             req.user = request.user
+            
             req.save()
-
-            response = get(req.url)
-            print(req.url)
-            return HttpResponse(response)
-        return render(request, 'request/request.html', {'formset': form})
+            
+            
+        return render(request, 'template_example/bluepink/index.html', {'formset': form})

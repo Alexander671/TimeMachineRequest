@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 from .models import Request
 from django import forms
 
@@ -8,7 +8,9 @@ class DateTimeLocalInput(forms.DateTimeInput):
 class RequestForm(ModelForm):
     class Meta:
         model = Request
-        fields = ['url','time_request']
+        exclude = ('id','user', 'response')
+        
         widgets = {
         'time_request': DateTimeLocalInput(attrs={'type': 'datetime-local'}),
-        }
+        } 
+
