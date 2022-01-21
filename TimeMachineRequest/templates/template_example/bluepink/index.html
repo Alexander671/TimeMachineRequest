@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2> Request at selected time tool </h2>
+						<div class="row">
+							<div class="col">
+								<ul>
+									<li>It is an online tool execution of individual requests at selected time or API testing </li>
+									<li>This utility was created for those who want to execute pending requests </li>
+									<li>You can set up schedules or execute individual request </li>
+								</ul>
+							</div>
+							
+					</div>
+		<form action="/request/" method="post">
+			{% csrf_token %}
+			{{ formset }} <p>
+			<input type="submit" value="Submit" />
+		</form>
+		<div class="row">
+			<div class="col">
+				<ul>
+		<h3> Your Requests </h3>
+	    {% for request in req %}
+			{% if request.response %}
+				
+				<text style="color:#ff0000">
+				<li>{{ request.time_request }} <p>
+					{{ request.url }}</li>	
+				</text>
+			{% else %}
+		
+				<text style="color:#00ff00">
+				<li>{{ request.time_request }} <p>
+					{{ request.url }}</li>
+				</text>
+        <p>
+			{% endif %}
+{% endfor %}
+<ul>
+{% endblock %}

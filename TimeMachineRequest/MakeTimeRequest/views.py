@@ -11,7 +11,7 @@ class makeRequest (View):
         form = RequestForm()
         req = Request.objects.filter(user = request.user.id)
         print(req)
-        return render(request, 'request/request.html', {'req' : req, 'formset': form})
+        return render(request, 'template_example/bluepink/index.html', {'req' : req, 'formset': form})
  
 
     def post(self, request):
@@ -24,4 +24,4 @@ class makeRequest (View):
             req.save()
             
             
-        return render(request, 'request/request.html', {'formset': form})
+        return render(request, 'template_example/bluepink/index.html', {'formset': form})
